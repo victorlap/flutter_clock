@@ -9,6 +9,7 @@ import 'package:digital_clock/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_clock_helper/model.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:text_to_path_maker/text_to_path_maker.dart';
 
@@ -84,10 +85,20 @@ class _ClockState extends State<Clock> {
           ? Center(child: Text("Loading"))
           : Column(
               children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Image(image: AssetImage('third_party/WeatherIcons/Cloud.svg'))
-                  ],
+                Flexible(
+                  child: FractionallySizedBox(
+                    widthFactor: 0.5,
+                    child: Row(
+                      children: <Widget>[
+                        SvgPicture.asset(
+                          'third_party/WeatherIcons/Cloud.svg',
+                          color: getColors(context)[ThemeOption.text],
+                          width: 200,
+                          height: 200,
+                        )
+                      ],
+                    ),
+                  ),
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -99,13 +110,18 @@ class _ClockState extends State<Clock> {
                     ClockDigit(_font, Digit.MINUTE_TWO, format),
                   ],
                 ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    ClockDigit(_font, Digit.SECOND_ONE, format),
-                    ClockDigit(_font, Digit.SECOND_TWO, format),
-                  ],
+                Expanded(
+                  child: FractionallySizedBox(
+                    widthFactor: 0.5,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        ClockDigit(_font, Digit.SECOND_ONE, format),
+                        ClockDigit(_font, Digit.SECOND_TWO, format),
+                      ],
+                    ),
+                  ),
                 )
               ],
             ),

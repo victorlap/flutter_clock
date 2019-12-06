@@ -178,7 +178,7 @@ class _ClockDigitState extends State<ClockDigit>
         aspectRatio: 2.0,
         child: Container(
           margin: EdgeInsets.all(10.0),
-          decoration: BoxDecoration(border: Border.all()),
+//          decoration: BoxDecoration(border: Border.all()),
           child: CustomPaint(
             painter: DigitPainter(
               number,
