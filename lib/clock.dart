@@ -96,7 +96,7 @@ class _ClockState extends State<Clock> {
   @override
   Widget build(BuildContext context) {
     final format =
-        DateFormat(widget.model.is24HourFormat ? 'HHmmss' : 'hhmmsss');
+        DateFormat(widget.model.is24HourFormat ? 'HHmmss' : 'hhmmss');
 
     return Container(
       padding: EdgeInsets.all(10),

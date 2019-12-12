@@ -94,15 +94,6 @@ class _ClockDigitState extends State<ClockDigit>
     }
 
     data = PathMorph.samplePaths(previousPath, path);
-
-//    if (data.points1.length > data.points2.length) {
-//      // Make sure the first digit does not have more contour points than the next
-//      data.points1 = List.from(data.points1.getRange(0, data.points2.length));
-//      data.shiftedPoints =
-//          List.from(data.shiftedPoints.getRange(0, data.points2.length));
-//    } else if (data.points1.length != data.points2.length) {
-//      data.points2 = List.from(data.points2.getRange(0, data.points1.length));
-//    }
   }
 
   void _updateAnimations() {
@@ -123,9 +114,6 @@ class _ClockDigitState extends State<ClockDigit>
     final dateTime = DateTime.now();
 
     if (number != getNumber(dateTime)) {
-      print(
-          "${widget.digit} number: $number, getnumber; ${getNumber(dateTime)}");
-
       setState(() {
         number = getNumber(dateTime);
 
