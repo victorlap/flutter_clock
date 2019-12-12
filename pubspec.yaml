@@ -21,8 +21,10 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: BungeeShade
+      fonts:
+        - asset: third_party/Bungee_Shade/BungeeShade-Regular.ttf
   assets:
-    - third_party/Alatsi/
-    - third_party/Calistoga/
-    - third_party/PressStart2P/
+    - third_party/Bungee_Shade/
     - third_party/WeatherIcons/

@@ -54,7 +54,7 @@ class _ClockState extends State<Clock> {
 
   void _loadFont() {
     rootBundle
-        .load("third_party/PressStart2P/PressStart2P-Regular.ttf")
+        .load("third_party/Bungee_Shade/BungeeShade-Regular.ttf")
         .then((ByteData data) {
       // Create a font reader
       var reader = PMFontReader();
@@ -74,45 +74,97 @@ class _ClockState extends State<Clock> {
     });
   }
 
+  String _getWeatherPicture() {
+    switch (widget.model.weatherCondition) {
+      case WeatherCondition.cloudy:
+        return 'third_party/WeatherIcons/Cloud.svg';
+      case WeatherCondition.foggy:
+        return 'third_party/WeatherIcons/Haze.svg';
+      case WeatherCondition.rainy:
+        return 'third_party/WeatherIcons/Rain.svg';
+      case WeatherCondition.snowy:
+        return 'third_party/WeatherIcons/Snow.svg';
+      case WeatherCondition.sunny:
+        return 'third_party/WeatherIcons/Sun.svg';
+      case WeatherCondition.thunderstorm:
+        return 'third_party/WeatherIcons/Storm.svg';
+      case WeatherCondition.windy:
+        return 'third_party/WeatherIcons/Tornado.svg';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final format =
         DateFormat(widget.model.is24HourFormat ? 'HHmmss' : 'hhmmsss');
 
     return Container(
-      color: getColors(context)[ThemeOption.background],
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        // Box decoration takes a gradient
+        gradient: LinearGradient(
+          // Where the linear gradient begins and ends
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          // Add one stop for each color. Stops should increase from 0 to 1
+          stops: [0.1, 0.3, 0.7, 0.9],
+          colors: [
+            getColors(context)[ThemeOption.background],
+            getColors(context)[ThemeOption.background2],
+            getColors(context)[ThemeOption.background3],
+            getColors(context)[ThemeOption.background4],
+          ],
+        ),
+      ),
       child: !_ready
           ? Center(child: Text("Loading"))
           : Column(
               children: <Widget>[
                 Flexible(
-                  child: FractionallySizedBox(
-                    widthFactor: 0.5,
+                  child: AspectRatio(
+                    aspectRatio: 3,
                     child: Row(
                       children: <Widget>[
-                        SvgPicture.asset(
-                          'third_party/WeatherIcons/Cloud.svg',
-                          color: getColors(context)[ThemeOption.text],
-                          width: 200,
-                          height: 200,
-                        )
+                        Flexible(
+                          child: SvgPicture.asset(
+                            _getWeatherPicture(),
+                            color: getColors(context)[ThemeOption.text],
+                          ),
+                        ),
+                        AspectRatio(
+                          aspectRatio: 2.0,
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              widget.model.temperatureString,
+                              style: TextStyle(
+                                fontSize: 200,
+                                color: getColors(context)[ThemeOption.text],
+                                fontFamily: "BungeeShade",
+                              ),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
                 ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    ClockDigit(_font, Digit.HOUR_ONE, format),
-                    ClockDigit(_font, Digit.HOUR_TWO, format),
-                    ClockDigit(_font, Digit.MINUTE_ONE, format),
-                    ClockDigit(_font, Digit.MINUTE_TWO, format),
-                  ],
-                ),
-                Expanded(
-                  child: FractionallySizedBox(
-                    widthFactor: 0.5,
+                Flexible(
+                    child: AspectRatio(
+                        aspectRatio: 4,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            ClockDigit(_font, Digit.HOUR_ONE, format),
+                            ClockDigit(_font, Digit.HOUR_TWO, format),
+                            ClockDigit(_font, Digit.MINUTE_ONE, format),
+                            ClockDigit(_font, Digit.MINUTE_TWO, format),
+                          ],
+                        ))),
+                Flexible(
+                  child: AspectRatio(
+                    aspectRatio: 2,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,

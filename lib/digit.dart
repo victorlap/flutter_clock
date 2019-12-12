@@ -47,7 +47,7 @@ class _ClockDigitState extends State<ClockDigit>
 
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 750),
+      duration: Duration(milliseconds: 400),
     );
 
     _updateTime();
@@ -175,7 +175,7 @@ class _ClockDigitState extends State<ClockDigit>
   Widget build(BuildContext context) {
     return Expanded(
       child: AspectRatio(
-        aspectRatio: 2.0,
+        aspectRatio: 1.0,
         child: Container(
           margin: EdgeInsets.all(10.0),
 //          decoration: BoxDecoration(border: Border.all()),

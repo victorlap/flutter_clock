@@ -2,20 +2,26 @@ import 'package:flutter/material.dart';
 
 enum ThemeOption {
   background,
+  background2,
+  background3,
+  background4,
   text,
-  shadow,
 }
 
 final lightTheme = {
-  ThemeOption.background: Color(0xFF81B3FE),
+  ThemeOption.background: Color(0xff40255c),
+  ThemeOption.background2: Color(0xff3017a2),
+  ThemeOption.background3: Color(0xfffe00c1),
+  ThemeOption.background4: Color(0xffb00085),
   ThemeOption.text: Colors.white,
-  ThemeOption.shadow: Colors.black,
 };
 
 final darkTheme = {
-  ThemeOption.background: Colors.black,
-  ThemeOption.text: Colors.white,
-  ThemeOption.shadow: Color(0xFF174EA6),
+  ThemeOption.background: Color(0xff20122d),
+  ThemeOption.background2: Color(0xff170b51),
+  ThemeOption.background3: Color(0xff7f0060),
+  ThemeOption.background4: Color(0xff580042),
+  ThemeOption.text: Color(0xffcccccc),
 };
 
 getColors(BuildContext context) {
