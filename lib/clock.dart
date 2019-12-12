@@ -56,11 +56,7 @@ class _ClockState extends State<Clock> {
     rootBundle
         .load("third_party/Bungee_Shade/BungeeShade-Regular.ttf")
         .then((ByteData data) {
-      // Create a font reader
-      var reader = PMFontReader();
-
-      // Parse the font
-      _font = reader.parseTTFAsset(data);
+      _font = PMFontReader().parseTTFAsset(data);
 
       setState(() {
         _ready = true;
@@ -90,6 +86,8 @@ class _ClockState extends State<Clock> {
         return 'third_party/WeatherIcons/Storm.svg';
       case WeatherCondition.windy:
         return 'third_party/WeatherIcons/Tornado.svg';
+      default:
+        return '';
     }
   }
 
@@ -98,15 +96,18 @@ class _ClockState extends State<Clock> {
     final format =
         DateFormat(widget.model.is24HourFormat ? 'HHmmss' : 'hhmmss');
 
+    final textStyle = TextStyle(
+      fontSize: 200,
+      color: getColors(context)[ThemeOption.text],
+      fontFamily: "BungeeShade",
+    );
+
     return Container(
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
-        // Box decoration takes a gradient
         gradient: LinearGradient(
-          // Where the linear gradient begins and ends
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
-          // Add one stop for each color. Stops should increase from 0 to 1
           stops: [0.1, 0.3, 0.7, 0.9],
           colors: [
             getColors(context)[ThemeOption.background],
@@ -117,7 +118,11 @@ class _ClockState extends State<Clock> {
         ),
       ),
       child: !_ready
-          ? Center(child: Text("Loading"))
+          ? Center(
+              child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text("Loading", style: textStyle),
+            ))
           : Column(
               children: <Widget>[
                 Flexible(
@@ -135,14 +140,8 @@ class _ClockState extends State<Clock> {
                           aspectRatio: 2.0,
                           child: FittedBox(
                             fit: BoxFit.scaleDown,
-                            child: Text(
-                              widget.model.temperatureString,
-                              style: TextStyle(
-                                fontSize: 200,
-                                color: getColors(context)[ThemeOption.text],
-                                fontFamily: "BungeeShade",
-                              ),
-                            ),
+                            child: Text(widget.model.temperatureString,
+                                style: textStyle,),
                           ),
                         ),
                       ],
