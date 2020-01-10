@@ -9,7 +9,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_clock_helper:
-    path: ../flutter_clock_helper
+    path: ./flutter_clock_helper
   cupertino_icons: ^0.1.2
   text_to_path_maker: ^0.5.7
   path_morph: ^1.0.1
