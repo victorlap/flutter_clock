@@ -140,8 +140,10 @@ class _ClockState extends State<Clock> {
                           aspectRatio: 2.0,
                           child: FittedBox(
                             fit: BoxFit.scaleDown,
-                            child: Text(widget.model.temperatureString,
-                                style: textStyle,),
+                            child: Text(
+                              widget.model.temperatureString,
+                              style: textStyle,
+                            ),
                           ),
                         ),
                       ],

@@ -1,11 +1,18 @@
-# Digital Clock
+# Synth Wave Clock
 
-This app is an example of a digital clock.
-It has a light theme and a dark theme.
-See the [Analog Clock](../analog_clock) if you'd like an example that displays the weather and location.
+This app is a submission for the Flutter Clock challange (flutter.dev/clock).
 
-<img src='digital.gif' width='350'>
+It features a clock based on a synth wave theme with morphing letters.
 
-<img src='digital_dark.png' width='350'>
+Featuring:
+ * OFL font BungeeShade
+ * OFL font WeatherIcons
+ * text_to_path_maker
+ * path_morph
+ * flutter_svg
 
-<img src='digital_light.png' width='350'>
+<img src='synth_wave.gif' width='350'>
+
+<img src='synth_wave_light.png' width='350'>
+
+<img src='synth_wave_dark.png' width='350'>
