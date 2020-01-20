@@ -9,10 +9,6 @@ enum ThemeOption {
 }
 
 final lightTheme = {
-//  ThemeOption.background: Colors.black,
-//  ThemeOption.background2: Colors.black,
-//  ThemeOption.background3: Colors.black,
-//  ThemeOption.background4: Colors.black,
   ThemeOption.background: Color(0xff40255c),
   ThemeOption.background2: Color(0xff3017a2),
   ThemeOption.background3: Color(0xfffe00c1),

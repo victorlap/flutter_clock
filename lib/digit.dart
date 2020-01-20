@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:digital_clock/digitpainter.dart';
-import 'package:digital_clock/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:path_morph/morph.dart';
 import 'package:path_morph/path_morph.dart';
+import 'package:synth_wave_clock/digitpainter.dart';
+import 'package:synth_wave_clock/theme.dart';
 import 'package:text_to_path_maker/text_to_path_maker.dart';
 
 enum Digit {

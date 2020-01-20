@@ -1,6 +1,6 @@
 # Synth Wave Clock
 
-This app is a submission for the Flutter Clock challange (flutter.dev/clock).
+This app is a submission for the Flutter Clock challenge (flutter.dev/clock).
 
 It features a clock based on a synth wave theme with morphing letters.
 

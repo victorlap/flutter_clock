@@ -4,13 +4,13 @@
 
 import 'dart:typed_data';
 
-import 'package:digital_clock/digit.dart';
-import 'package:digital_clock/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_clock_helper/model.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+import 'package:synth_wave_clock/digit.dart';
+import 'package:synth_wave_clock/theme.dart';
 import 'package:text_to_path_maker/text_to_path_maker.dart';
 
 class Clock extends StatefulWidget {
